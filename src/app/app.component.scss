@@ -1,0 +1,23 @@
+.rhythm {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+
+  > * {
+    flex-grow: 1;
+  }
+
+  .beat {
+    background: black;
+    border: 2px solid grey;
+  }
+
+  .rest {
+    background: white;
+    border: 2px solid grey;
+  }
+
+  .current {
+    box-shadow: 0 0 10px;
+  }
+}
