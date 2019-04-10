@@ -1,0 +1,7 @@
+<div class="rhythm">
+  <span [ngClass]="{
+    'rest': part === '0',
+    'beat': part === '1',
+    'current': i === index
+    }" *ngFor="let part of rhythmItems; index as i">&nbsp;</span>
+</div>

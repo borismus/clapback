@@ -42,6 +42,11 @@ export const compareRhythmsNoDoubleCount =
   return result.join('');
 }
 
-export const beatGenerator = async function(rhythmString: string) {
-
+export const pad = function(s: string, length: number) {
+  const padAmount = length - s.length;
+  let padding = '';
+  for (let i = 0; i < padAmount; i++) {
+    padding += ' ';
+  }
+  return s + padding;
 }

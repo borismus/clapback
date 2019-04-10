@@ -1,23 +1,18 @@
-.rhythm {
+.playback, .record {
+  padding: 16px;
+}
+
+.tap-target {
+  margin-top: 16px;
+  width: 100%;
+  height: 200px;
+  background: #eee;
   display: flex;
-  flex-direction: row;
-  height: 30px;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto;
 
-  > * {
-    flex-grow: 1;
-  }
-
-  .beat {
-    background: black;
-    border: 2px solid grey;
-  }
-
-  .rest {
-    background: white;
-    border: 2px solid grey;
-  }
-
-  .current {
-    box-shadow: 0 0 10px;
+  &:focus {
+    background: #aaa;
   }
 }

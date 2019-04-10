@@ -1,12 +1,15 @@
 import {EventEmitter} from 'eventemitter3';
 
 export class Clock extends EventEmitter {
-  ticking = false;
-  period: number;
+  public period: number;
+  public ticking = false;
   beat = 0;
 
-  constructor(period: number) {
+  constructor(bpm: number, resolution: number) {
     super();
+    const bps = bpm / 60;
+    const quarterNotePeriod = 1 / bps;
+    const period = quarterNotePeriod / (resolution / 4);
     this.period = period;
   }
 

@@ -1,28 +1,44 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    👏👏👏
   </h1>
 </div>
 
-<!--This should be a separate component. -->
-<div class="rhythm">
-  <span [ngClass]="{
-    'rest': part === '0',
-    'beat': part === '1',
-    'current': i === currentIndex
-    }" *ngFor="let part of refRhythmItems; index as i">&nbsp;</span>
+<div class="playback">
+  <clap-rhythm [rhythmString]="refRhythm" [currentIndex]="currentIndex" [active]="playing"></clap-rhythm>
+
+  <div class="playback-controls">
+    <mat-slide-toggle [checked]="playing" (change)="togglePlay($event)">
+      Playback
+    </mat-slide-toggle>
+
+    <mat-slide-toggle [disabled]="!playing" [checked]="metronome" (change)="toggleMetronome($event)">
+      Metronome
+    </mat-slide-toggle>
+  </div>
 </div>
 
-<div class="controls">
-<mat-slide-toggle [checked]="playing" (change)="togglePlay($event)">
-  Playing back
-</mat-slide-toggle>
+<mat-divider></mat-divider>
 
-<mat-slide-toggle [checked]="metronome" (change)="toggleMetronome($event)">
-  Metronome
-</mat-slide-toggle>
+<div class="record">
+  <div *ngIf="countdown">{{countdownRemaining}}</div>
+  <div *ngFor="let rhythm of detRhythmsPadded; index as i">
+    <clap-rhythm [rhythmString]="rhythm" [currentIndex]="currentIndex" 
+      [active]="recordingAttempt === i && recording"></clap-rhythm>
+  </div>
+
+  <div class="record-controls">
+      <mat-slide-toggle [checked]="recording" (change)="toggleRecording($event)">
+        Record
+      </mat-slide-toggle>
+    </div>
+
+  <div *ngIf="recording" class="tap-target"
+    (mousedown)="userBeat($event)" (touchstart)="userBeat($event)"
+    (mouseup)="userBeatRelease($event)" (touchend)="userBeatRelease($event)">
+    Tap here
+  </div>
 </div>
-
 
 <router-outlet></router-outlet>
