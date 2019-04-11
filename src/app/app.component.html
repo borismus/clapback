@@ -34,7 +34,7 @@
       </mat-slide-toggle>
     </div>
 
-  <div *ngIf="recording" class="tap-target"
+  <div *ngIf="recording || countdown" class="tap-target"
     (mousedown)="userBeat($event)" (touchstart)="userBeat($event)"
     (mouseup)="userBeatRelease($event)" (touchend)="userBeatRelease($event)">
     Tap here
